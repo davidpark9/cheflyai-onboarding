@@ -1,28 +1,29 @@
 // src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import DietRestrictionPage from './DietRestrictionPage';
-import LunchDietRestrictionsPage from './LunchDietRestrictionsPage';  // Import LunchDietRestrictionsPage
-import LunchMealsPage from './LunchMealsPage';  // Import LunchMealsPage
-import DinnerDietRestrictionsPage from './DinnerDietRestrictionsPage'; // Import DinnerDietRestrictionsPage
-import DinnerMealsPage from './DinnerMealsPage'; // Import DinnerMealsPage
 import { StateProvider } from './state';
 import SignUpPage from './pages/SignUpPage';
-import BreakfastPage from './pages/BreakfastPage'
+import LunchPage from './pages/LunchPage';
+import BreakfastPage from './pages/BreakfastPage';
+import DinnerPage from './pages/DinnerPage';
+import FinalizePage from './pages/FinalizePage';
+import DataVisualization from './components/DataVisualization';
+
+
 
 const App = () => {
   return (
     <StateProvider>
-    <Router>
-      <Routes>
-        <Route path="/" element={<SignUpPage/>} />
-        <Route path="/breakfast" element={<BreakfastPage />} />
-        <Route path="/lunch-diet-restriction" element={<LunchDietRestrictionsPage />} />
-        <Route path="/lunch-meals-page" element={<LunchMealsPage />} />
-        <Route path="/dinner-diet-restriction" element={<DinnerDietRestrictionsPage />} />
-        <Route path="/dinner-meals-page" element={<DinnerMealsPage />} />
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+          <Route path="/" element={<SignUpPage/>} />
+          <Route path="/breakfast" element={<BreakfastPage />} />
+          <Route path="/lunch-page" element={<LunchPage />} />
+          <Route path="/dinner-page" element={<DinnerPage />} />
+          <Route path="/finalize-page" element={<FinalizePage />} />
+          <Route path="/data-visualization" element={<DataVisualization />} />
+        </Routes>
+      </Router>
     </StateProvider>
   );
 };

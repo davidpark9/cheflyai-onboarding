@@ -4,24 +4,23 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Input from "../components/Input";
 import Slider from "../components/Slider";
-import  "./pages-css/breakfast.css";
+import "./pages-css/lunch.css";
 import {RecipeList} from "../components/Recipe";
 
-
-
-export default function BreakfastPage() {
+export default function LunchPage() {
+    
   const userName = useUserName();
   const navigate = useNavigate(); 
-  const [breakfastName, setBreakfastName] = useState("");
+  const [lunch, setLunch] = useState("");
   const [calories, setCalories] = useState(400);
   const { isLoading, recipes, fetchRecipes } = useRecipes(
-    breakfastName,
+    lunch,
     5,
     calories
   );
 
-  function handleBreakfastChange(e) {
-    setBreakfastName(e.target.value);
+  function handleLunchChange(e) {
+    setLunch(e.target.value);
   }
 
   function handleUpdateCalories(e) {
@@ -33,14 +32,13 @@ export default function BreakfastPage() {
     await fetchRecipes();
   };
 
-
   return (
     <div>
       <h2>Name: {userName}</h2>
-      <h3> What's your usual go to for breakfast?</h3>
+      <h3> What's your usual go to for lunch?</h3>
       <Input
-        value={breakfastName}
-        handleChange={handleBreakfastChange}
+        value={lunch}
+        handleChange={handleLunchChange}
         handleSubmit={handleMealClick}
       />
       <Slider
@@ -48,8 +46,9 @@ export default function BreakfastPage() {
         handleChange={handleUpdateCalories}
         value={calories}
       />
+      
       <RecipeList recipes={recipes} />
-      <button onClick={() => navigate('/lunch-page')} className="continueButton" > Proceed to Lunch</button>
+      <button onClick={() => navigate('/dinner-page')} className="continueButton" > Continue to Dinner</button>
     </div>
   );
 }

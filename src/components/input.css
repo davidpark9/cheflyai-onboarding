@@ -1,0 +1,21 @@
+.input-button {
+    color: black;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+
+    padding: 12px 24px;
+    text-align: center;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 300;
+    color: #333;
+    font-size: 11px;
+  }
+  
+  .input-button:hover {
+    background-color: #eeeeee;
+  }
+  
+  
