@@ -44,19 +44,25 @@
 //   return recipes.map((recipe) => <RecipeBox recipe={recipe} />);
 // }
 
-import React from "react";
+import { json } from "d3";
+import React, { useState } from "react";
 import './style.css';
 
-export function RecipeBox({ recipe }) {
+export function RecipeBox({ recipe ,setrecipeList}) {
   const macros = [
     recipe.nutrition.nutrients[0],
     recipe.nutrition.nutrients[1],
     recipe.nutrition.nutrients[3],
     recipe.nutrition.nutrients[8],
   ];
+  //console.log(macros,'macros==');
 
   const imageSrc = recipe.image;
 
+  //when button is clicked this function is called.
+const addInfoHandler=()=>{
+  setrecipeList((prev)=>[...prev, macros])
+}
   return (
     <div className="recipe-box">
       <div className="recipe-title">
@@ -68,13 +74,24 @@ export function RecipeBox({ recipe }) {
           {macros.map((macro) => macro.name + ": " + macro.amount).join("\n")}
         </code>
       </div>
-      <button className="selectButton">Select</button>
+      <button onClick={addInfoHandler} className="selectButton">Select</button>
     </div>
   );
 }
 
+
+
 export function RecipeList({ recipes }) {
+  const [recipeList,setrecipeList]=useState([])
+  if(recipeList){
+
+    localStorage.setItem('recipe',JSON.stringify(recipeList))
+    //const storedRecipe= localStorage.getItem("recipe")
+    //const persedRes= JSON.parse(storedRecipe)
+    //console.log("rec==",persedRes);
+  }
+
   return recipes.map((recipe) => (
-    <RecipeBox key={recipe.id} recipe={recipe} />
+    <RecipeBox key={recipe.id} setrecipeList={setrecipeList} recipe={recipe} />
   ));
 }

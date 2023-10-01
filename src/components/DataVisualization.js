@@ -1,27 +1,48 @@
+import React, { useEffect, useRef } from "react";
+import Chart from "chart.js/auto";
+import "./DataVisualization.css";
 
-import React from 'react';
-import * as d3 from 'd3';
+const DataVisualization = ({ data }) => {
+  const chartRefs = useRef([]);
 
-import DataVisualization from './DataVisualization';
+  useEffect(() => {
+    chartRefs.current = chartRefs.current.slice(0, data.length);
 
-const data = [
-  { x: 1, y: 2 },
-  { x: 3, y: 4 },
-  { x: 5, y: 6 },
-];
+    data.forEach((item, index) => {
+      const chartData = {
+        labels: item.map((i) => i.name),
+        datasets: [
+          {
+            data: item.map((i) => i.amount),
+            radius: "40%", 
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.7)",
+              "rgba(54, 162, 235, 0.7)",
+              "rgba(255, 206, 86, 0.7)",
+              "rgba(75, 192, 192, 0.7)",
+            ],
+          },
+        ],
+      };
 
-const DataVisualization = () => {
-  const render = () => {
-    const svg = d3.select('svg');
+      const ctx = chartRefs.current[index].getContext("2d");
 
-    const line = d3.line().x(function(d) { return d.x; }).y(function(d) { return d.y; });
-
-    svg.append('path').attr('d', line(data));
-  };
+      new Chart(ctx, {
+        type: "pie",
+        data: chartData,
+      });
+    });
+  }, [data]);
 
   return (
-    <div>
-      <svg ref={render} />
+    
+    <div className="data">
+    <h1>Your Macros for daily meal</h1>
+      <div className="chart-container">
+        {data.map((item, index) => (
+          <canvas key={index} ref={(ref) => (chartRefs.current[index] = ref)} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -49,7 +49,7 @@ export default function DinnerPage() {
       />
       
       <RecipeList recipes={recipes} />
-      <button onClick={() => navigate('/data-visualization')} className="continueButton">Finalize</button>
+      <button onClick={() => navigate('/dataviz-page')} className="continueButton">Finalize</button>
     </div>
   );
 }
