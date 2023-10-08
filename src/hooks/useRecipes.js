@@ -7,7 +7,13 @@ import axios from "axios";
  * @param {string} maxCalories -Setting the threshold for the calories and indexing meals.
  */
 export function useRecipes(query, number, maxCalories) {
+
+  //recipes is a piece of stat that will store recipe data fetched from teh API
+  //setRecipes is a function that allows you to update the 'recipes' state. 
   const [recipes, setRecipes] = useState([]);
+
+  //isLoading is a piece of stat used to track if data is currently being loaded or not.
+  //setIsLoading is a function that allows you to update the isLoading State.
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchRecipes = async () => {
@@ -16,6 +22,7 @@ export function useRecipes(query, number, maxCalories) {
 
     setIsLoading(true);
 
+    //response stores API response
     try {
       console.log("in try catch");
       const response = await axios.get(
@@ -31,7 +38,7 @@ export function useRecipes(query, number, maxCalories) {
           },
         }
       );
-      
+      //Once the response is received successfully, setRecipes(response.data.results) is called. This updates the recipes state with the data retrieved from the API. The new recipe data will then be available to any component that uses this useRecipes hook.
       setRecipes(response.data.results)
 
     } catch (error) {

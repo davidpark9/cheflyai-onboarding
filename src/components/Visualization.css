@@ -1,0 +1,28 @@
+.data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px; /* Add padding for spacing */
+  }
+  
+  .chart-container {
+    width: 630px; /* Fixed width in pixels */
+    margin-bottom: 240px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #a1a1a1; /* Add border to .data */
+    border-radius: 5%;
+  }
+  
+  .chart-container canvas {
+    width: 100%;
+    height: 100%;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  

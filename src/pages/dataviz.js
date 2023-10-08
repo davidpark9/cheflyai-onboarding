@@ -1,21 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect,useContext, useState } from 'react';
 import DataVisualization from '../components/DataVisualization';
-import "./pages-css/dataviz.css";
+import DavidVisualization from '../components/DavidVisualization';
+import "./pages-css/data.css";
+import { RecipeContext } from '../components/context/RecipeContext';
 
+const DataViz = () => {
+    const{state}=useContext(RecipeContext)
+    const parsedRes = state.recipes;
 
+    const aggregatedData = parsedRes.reduce((acc, meal) => {
+        meal.forEach((nutrient) => {
+            const existingIndex = acc.findIndex((item) => item.name === nutrient.name);
+            if (existingIndex !== -1) {
+                acc[existingIndex].amount += nutrient.amount;
+            } else {
+                acc.push({ ...nutrient });
+            }
+        });
+        return acc;
+    }, []);
 
-const DataViz = () =>{
-    const storedRecipe= localStorage.getItem("recipe")
-    // console.log("s",storedRecipe);
-    const persedRes= JSON.parse(storedRecipe)
-    // console.log("p",persedRes);
-    
-
-  return (
-    <div className='dataCanvas'>
-      <DataVisualization data={persedRes} />
-    </div>
-  );
+    return (
+        <div className='dataCanvas'>
+            <DataVisualization data={[aggregatedData]} />
+            <DavidVisualization />
+        </div>
+    );
 };
 
 export default DataViz;

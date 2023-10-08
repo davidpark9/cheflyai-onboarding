@@ -23,7 +23,7 @@ const SignUpPage = () => {
 
   return (
     <div>
-      <h1>Sign In</h1>
+      <h1>Full Name</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -31,7 +31,7 @@ const SignUpPage = () => {
           value={user.userName}
           onChange={handleUsernameChange}
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit">Enter</button>
       </form>
     </div>
   );

@@ -21,6 +21,7 @@ body {
     flex-wrap: wrap;
     contain: content;
     top: 100px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .continueButton {
@@ -31,19 +32,15 @@ body {
     border-radius: 4px;
     cursor: pointer;
   
-    /* Material.io design guidelines */
     padding: 12px 24px;
     text-align: center;
     outline: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  
-    /* Make the button more prominent */
     font-weight: 600;
     color: #333;
-  
-    /* Positioning */
+
     float: right;
-    margin: 20px; /* Adjust the margin as needed */
+    margin: 20px; 
   }
   
   .continueButton:hover {

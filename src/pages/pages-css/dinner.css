@@ -21,6 +21,8 @@ body {
     flex-wrap: wrap;
     contain: content;
     top: 100px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 .continueButton {

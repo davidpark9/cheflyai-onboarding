@@ -37,6 +37,10 @@
     font-weight: 600;
     color: #333;
   }
+  .red{
+    background-color: red;
+    color: white;
+  }
   
   .selectButton:hover {
     background-color: #eeeeee;

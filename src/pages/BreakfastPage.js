@@ -31,13 +31,15 @@ export default function BreakfastPage() {
   const handleMealClick = async (e) => {
     e.preventDefault();
     await fetchRecipes();
+    
+
   };
 
 
   return (
     <div>
       <h2>Name: {userName}</h2>
-      <h3> What's your usual go to for breakfast?</h3>
+      <h3> What's your usual go-to for breakfast?</h3>
       <Input
         value={breakfastName}
         handleChange={handleBreakfastChange}

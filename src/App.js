@@ -6,12 +6,14 @@ import LunchPage from './pages/LunchPage';
 import BreakfastPage from './pages/BreakfastPage';
 import DinnerPage from './pages/DinnerPage';
 import DataViz from './pages/dataviz';
+import { RecipeProvider } from './components/context/RecipeContext';
 
 
 
 const App = () => {
   return (
     <StateProvider>
+      <RecipeProvider>
       <Router>
         <Routes>
           <Route path="/" element={<SignUpPage/>} />
@@ -21,6 +23,7 @@ const App = () => {
           <Route path="/dataviz-page" element={<DataViz />} />
         </Routes>
       </Router>
+      </RecipeProvider>
     </StateProvider>
     
   );

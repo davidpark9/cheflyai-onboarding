@@ -35,7 +35,7 @@ export default function LunchPage() {
   return (
     <div>
       <h2>Name: {userName}</h2>
-      <h3> What's your usual go to for lunch?</h3>
+      <h3> What's your usual go-to for lunch?</h3>
       <Input
         value={lunch}
         handleChange={handleLunchChange}

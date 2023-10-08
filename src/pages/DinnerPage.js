@@ -16,7 +16,7 @@ export default function DinnerPage() {
   const [calories, setCalories] = useState(400);
   const { isLoading, recipes, fetchRecipes } = useRecipes(
     dinner,
-    5,
+    90,
     calories
   );
 
@@ -31,12 +31,14 @@ export default function DinnerPage() {
   const handleMealClick = async (e) => {
     e.preventDefault();
     await fetchRecipes();
+
+
   };
 
   return (
     <div>
       <h2>Name: {userName}</h2>
-      <h3> What's your usual go to for Dinner?</h3>
+      <h3> What's your usual go-to for Dinner?</h3>
       <Input
         value={dinner}
         handleChange={handleDinnerChange}
